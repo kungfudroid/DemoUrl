@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://www.quackit.com/html/html_editors/scratchpad/preview.cfm -->
+<html class="gr__quackit_com"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>My Example</title>
+
+</head><body >
+
+
+<label>Url
+<input type="text" name="Url" id="name" required="">
+</label> 
+</p>
+
+<p><button onClick="getData()">Save</button></p>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
+<script>
+  var config = {
+    databaseURL: "https://anapp-17675.firebaseio.com/",
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  	var getData= function() {
+  	let value = document.getElementById("name").value;
+  	
+  	if (!value) {
+  		value="https://www.google.com/"
+  	}
+  	alert(JSON.stringify(value));
+	  firebase.database().ref().set({
+	    Url: value
+	  }, function(error,data) {
+    if (error) {
+      console.log(">>>>>>>e",error);
+    } else {
+     console.log(">>>>>>>d",data);
+    }
+  });
+	}	
+  
+  
+</script> </body>
+
+</html>
